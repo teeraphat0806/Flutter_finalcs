@@ -66,7 +66,8 @@ class _CharacterListState extends State<CharacterList> {
             ListView.separated(
               itemCount: chracterss.length,
               separatorBuilder: (BuildContext context,int index) => const Divider(),
-              itemBuilder: (context, index) {
+              itemBuilder: (context, ind
+              ex) {
                 final c = chracterss[index];
                 return ListTile(
                   hoverColor: Colors.greenAccent,
