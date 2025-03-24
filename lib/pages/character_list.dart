@@ -30,6 +30,7 @@ class _CharacterListState extends State<CharacterList> {
         toolbarHeight: 70,
         automaticallyImplyLeading: false,
       ),
+      // ไม่มีเส้นแบ่งบรรทัดแยก ListTile
       body: FutureBuilder<List<Character>>(
         future: _characters,
         builder: (context, snapshot) {
@@ -60,6 +61,36 @@ class _CharacterListState extends State<CharacterList> {
                 );
               },
             );
+            /*
+            มีเส้นบรรทัดแยก แต่ละ ListTile  
+            ListView.separated(
+              itemCount: chracterss.length,
+              separatorBuilder: (BuildContext context,int index) => const Divider(),
+              itemBuilder: (context, index) {
+                final c = chracterss[index];
+                return ListTile(
+                  hoverColor: Colors.greenAccent,
+                  onTap:
+                      () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CharacterDetail(c: c),
+                          ),
+                        ),
+                      },
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(c.image),
+                    minRadius: 25,
+                    maxRadius: 35,
+                  ),
+                  title: Text(c.name, style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: const Color.fromARGB(255, 4, 227, 168))),
+                  subtitle: Text('${c.status} • ${c.species} • ${c.gender}'),
+                );
+              }
+            );
+
+            */
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
